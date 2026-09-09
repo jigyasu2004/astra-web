@@ -2,6 +2,7 @@
 import { useEffect,useRef,useState } from 'react';
 import { ArrowDown,ArrowUpRight,Leaf,RotateCcw } from 'lucide-react';
 import Forest from './forest';
+import Rain from './rain';
 const acts=[
  {label:'THE BEGINNING',lines:['Every forest','begins with one.'],copy:'A seed. A little light. A world waiting to unfold.'},
  {label:'TAKING ROOT',lines:['Small beginnings.','Deep possibilities.'],copy:'Below the quiet earth, a new life finds its way.'},
@@ -26,6 +27,7 @@ export default function Home(){const progress=useRef(0);const [p,setP]=useState(
  <aside className="side-index" aria-label="Scene chapters">{acts.map((a,i)=><button key={a.label} onClick={()=>jump((i+.15)/acts.length)} aria-label={a.label} aria-current={act===i?'step':undefined}><span className={act===i?'selected':''}/>0{i+1}</button>)}</aside>
  <div className="story-copy"><section key={act} className="chapter"><p className="eyebrow"><span className="live-dot"/>0{act+1} / {a.label}</p><h1>{a.lines.map((line,i)=><span className="line-mask" key={line}><span style={{animationDelay:`${i*100}ms`}}>{i===1?<em>{line}</em>:line}</span></span>)}</h1><p className="description">{a.copy}</p><button className="journey-link" onClick={()=>jump(act===7?0:(act+1+.15)/acts.length)}><span>{act===7?<RotateCcw size={18}/>:<ArrowDown size={18}/>}</span>{act===7?'Begin again':act===0?'Scroll to bring it to life':'Keep exploring'}</button></section></div>
  <div className="coordinates"><span>THE LIVING WORLD</span><b key={act}>{a.label} · 0{act+1} / 08</b></div>
+ <Rain/>
  <footer className="bottom-bar"><span>SCROLL SLOWLY <ArrowDown size={12}/></span><div className="progress-track"><i style={{width:String(p*100)+'%'}}/></div><span>{String(Math.round(p*100)).padStart(2,'0')} / 100</span><a href="https://github.com/dgreenheck/ez-tree" target="_blank" rel="noreferrer" className="credits">TREE STUDY ↗</a></footer>
  </div><div className="scroll-space" aria-hidden="true"/>
  </main>
