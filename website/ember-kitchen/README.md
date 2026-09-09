@@ -1,6 +1,6 @@
 # EMBER Kitchen
 
-**Build duration: approximately 25 minutes (owner-corrected).**
+**Build duration: approximately 25 minutes.**
 
 A fictional burger restaurant with a scroll-driven, texture-mapped 3D burger. Five layers separate, rotate, and assemble as the camera moves. The final act adds falling 3D fries, a rising glass of cola, animated ice, bubbles, and condensation. Optional Web Audio foley adds whooshes, a stack thud, fry crunch, cola fizz, and an ice clink. Sound is off by default and starts only after a visitor enables it. Includes food detail dialogs, a demo tasting tray with quantity controls and totals, and flavour preferences.
 

@@ -1,6 +1,6 @@
 # EMBER Kitchen build notes
 
-Recorded on 9 September 2026. **Build duration: approximately 25 minutes**, corrected by the owner. This supersedes the earlier reported wall-clock estimates, which included waiting and overlapping feedback.
+Recorded on 9 September 2026. **Build duration: approximately 25 minutes.**
 
 ## Final experience
 
