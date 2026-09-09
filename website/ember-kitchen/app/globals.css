@@ -52,3 +52,17 @@ footer{padding:50px 5vw 25px}.footer-top{display:flex;justify-content:space-betw
 @media(max-width:759px){.anatomy h2 br:first-child{display:none}.tray-row>button{min-width:44px;min-height:44px}}
 @media(max-width:759px) and (max-height:760px){.intro p{display:none}}
 @media(max-width:379px){.tray-row{flex-wrap:wrap}.tray-row>div{min-width:calc(100% - 70px)}.tray-row>button:first-of-type{margin-left:auto}}
+
+/* Freeze native scroll as well as story progress until the first 3D frame is drawn. */
+html.opening-locked{overflow:hidden!important;overscroll-behavior:none;scroll-behavior:auto}
+.opening-locked body{position:fixed;inset:0;width:100%;overflow:hidden;overscroll-behavior:none}
+.opening-status{position:absolute;z-index:8;right:17%;bottom:18%;width:260px;padding:18px 20px 8px;background:var(--cream);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 25px #24231e12;color:var(--ink)}
+.opening-status>span{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;line-height:1.5}
+.opening-status b{font-size:12px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--muted)}
+.opening-meter{height:3px;margin:12px 0 2px;background:var(--border);border-radius:3px;overflow:hidden}
+.opening-meter i{display:block;height:100%;background:var(--orange);transition:width .25s}
+.opening-status button{display:flex;justify-content:center;align-items:center;gap:10px;width:100%;min-height:44px;font-size:12px;font-weight:700;letter-spacing:.05em}
+.scroll-hint:disabled,.nav button:disabled{cursor:default;opacity:.6}
+.journey.static-journey{height:100svh;min-height:0}
+@media(max-width:759px){.opening-status{right:50%;transform:translateX(50%);bottom:16%;width:min(260px,82vw);padding:13px 17px 5px}}
+@media(orientation:landscape) and (max-height:540px){.opening-status{right:12%;bottom:18%;width:235px;transform:none;padding:10px 16px 3px}}

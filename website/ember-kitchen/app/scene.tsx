@@ -1,20 +1,21 @@
 'use client';
 import { useEffect, useRef, type MutableRefObject } from 'react';
 import type * as Three from 'three';
-type Props={progress:MutableRefObject<number>;paused:MutableRefObject<boolean>;onReady:()=>void;onError:()=>void};
-export default function BurgerScene({progress,paused,onReady,onError}:Props){
- const mount=useRef<HTMLDivElement>(null), callbacks=useRef({onReady,onError});callbacks.current={onReady,onError};
+type Props={progress:MutableRefObject<number>;paused:MutableRefObject<boolean>;onReady:()=>void;onError:()=>void;onProgress:(value:number)=>void};
+export default function BurgerScene({progress,paused,onReady,onError,onProgress}:Props){
+ const mount=useRef<HTMLDivElement>(null), callbacks=useRef({onReady,onError,onProgress});callbacks.current={onReady,onError,onProgress};
  useEffect(()=>{
   let disposed=false,renderer:Three.WebGLRenderer|undefined,raf=0,cleanup=()=>{};
   (async()=>{
-   const T=await import('three');const {GLTFLoader}=await import('three/addons/loaders/GLTFLoader.js');const {RoomEnvironment}=await import('three/addons/environments/RoomEnvironment.js');const {RoundedBoxGeometry}=await import('three/addons/geometries/RoundedBoxGeometry.js');
+   const [T,{GLTFLoader},{RoomEnvironment},{RoundedBoxGeometry}]=await Promise.all([import('three'),import('three/addons/loaders/GLTFLoader.js'),import('three/addons/environments/RoomEnvironment.js'),import('three/addons/geometries/RoundedBoxGeometry.js')]);
    if(disposed||!mount.current)return;const host=mount.current;
    renderer=new T.WebGLRenderer({alpha:true,antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,host.clientWidth<760?1.35:1.75));renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;renderer.setClearColor(0x000000,0);renderer.toneMapping=T.ACESFilmicToneMapping;renderer.toneMappingExposure=1.3;host.appendChild(renderer.domElement);
    const scene=new T.Scene(),camera=new T.PerspectiveCamera(34,1,.1,80);camera.position.set(0,.4,9);
    const pmrem=new T.PMREMGenerator(renderer),room=new RoomEnvironment();const env=pmrem.fromScene(room,.04);scene.environment=env.texture;room.dispose();pmrem.dispose();
    scene.add(new T.HemisphereLight(0xfff5dc,0x783316,2));const key=new T.DirectionalLight(0xffe0ae,3.0);key.position.set(-3,6,5);key.castShadow=true;key.shadow.mapSize.set(host.clientWidth<760?512:1024,host.clientWidth<760?512:1024);key.shadow.camera.left=-5;key.shadow.camera.right=5;key.shadow.camera.top=5;key.shadow.camera.bottom=-5;key.shadow.camera.far=20;key.shadow.normalBias=.03;scene.add(key);const rim=new T.DirectionalLight(0xffffff,2.4);rim.position.set(4,2,-2);scene.add(rim);
    const burger=new T.Group();scene.add(burger);
-   const gltf=await new GLTFLoader().loadAsync('/models/ember-burger.glb');if(disposed){gltf.scene.traverse(o=>{if(o instanceof T.Mesh){o.geometry.dispose();}});return;}
+   const gltf=await new GLTFLoader().loadAsync('/models/ember-burger.glb',event=>{if(!disposed&&event.total>0)callbacks.current.onProgress(Math.min(.9,event.loaded/event.total*.9));});if(disposed){gltf.scene.traverse(o=>{if(o instanceof T.Mesh){o.geometry.dispose();}});return;}
+   callbacks.current.onProgress(.94);
    gltf.scene.updateMatrixWorld(true);let source:Three.Mesh|undefined;gltf.scene.traverse(o=>{if(o instanceof T.Mesh&&!source)source=o;});if(!source)throw new Error('Burger geometry missing');
    const geometry=source.geometry.clone().applyMatrix4(source.matrixWorld);geometry.computeBoundingBox();const box=geometry.boundingBox!,center=box.getCenter(new T.Vector3()),size=box.getSize(new T.Vector3());geometry.translate(-center.x,-center.y,-center.z);geometry.scale(2.65/size.x,2.65/size.x,2.65/size.x);geometry.computeBoundingBox();
    const raw=geometry.toNonIndexed(),positions=raw.getAttribute('position'),normals=raw.getAttribute('normal'),uv=raw.getAttribute('uv'),bounds=geometry.boundingBox!,height=bounds.max.y-bounds.min.y;
