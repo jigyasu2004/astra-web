@@ -1,0 +1,8 @@
+export const projects = [
+ {title:'AFTER HOURS',category:'LIGHT / MOTION',image:'afterhours',color:'#ab75ff',year:'01',description:'A study in electric colour. Familiar streets become a cinematic world of light, rhythm and possibility.',link:'https://saddlebrown-shark-315620.hostingersite.com/',label:'Explore Aether'},
+ {title:'WILD SIGNAL',category:'NATURE / IMMERSION',image:'verdant',color:'#b0d583',year:'02',description:'From a single seed to a living canopy. Walk through a forest that grows, breathes and changes with every scroll.',link:'https://antiquewhite-ant-461490.hostingersite.com/',label:'Explore VERDANT'},
+ {title:'BEYOND ORBIT',category:'SPACE / EXPLORATION',image:'orbit',color:'#819aff',year:'03',description:'Leave the familiar behind. Drift past planetary horizons, scattered asteroids and the luminous rings of Saturn.',link:'https://peru-rat-318520.hostingersite.com/',label:'Explore EMBER'},
+ {title:'GOOD TASTE',category:'FOOD / PLAY',image:'kitchen',color:'#ff8855',year:'04',description:'A feast with a different perspective. Ingredients float apart, fries tumble and a fresh world of flavour takes shape.',link:'https://firebrick-reindeer-525697.hostingersite.com/',label:'Explore EMBER Kitchen'},
+ {title:'SOFT STRUCTURE',category:'FORM / ARCHITECTURE',image:'form',color:'#e5b9a0',year:'05',description:'Light meets geometry. This gallery concept explores the quiet drama of architectural forms and negative space.',link:null,label:'Gallery concept'},
+ {title:'OTHER EARTH',category:'LANDSCAPE / COLOUR',image:'dune',color:'#efb971',year:'06',description:'Wind draws the landscape. An editorial concept tracing the lines, textures and changing colours of a world in motion.',link:null,label:'Gallery concept'}
+];
