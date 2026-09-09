@@ -7,7 +7,7 @@ A collection of interactive websites built with GPT Astra. Each project includes
 | [Aether](website/aether) | Scroll-driven particle transformations and pointer-responsive motion | [Open Aether](https://saddlebrown-shark-315620.hostingersite.com) | 7 min 21 sec initial task |
 | [VERDANT](website/verdant) | Real-time 3D tree growth, an orbiting camera, forest travel, and falling autumn leaves | [Open VERDANT](https://antiquewhite-ant-461490.hostingersite.com) | [27 min](website/verdant/BUILD-NOTES.md) |
 | [EMBER — Space Journey](website/ember) | 3D Earth and Moon flybys, drifting asteroids, and travel through Saturn’s rings | [Open EMBER](https://peru-rat-318520.hostingersite.com) | 16 min 30 sec (research/build/checks; publishing excluded) |
-| [EMBER Kitchen](website/ember-kitchen) | A 3D burger unstacking on scroll, tumbling fries, rising iced cola, and a demo tasting tray | [Open EMBER Kitchen](https://firebrick-reindeer-525697.hostingersite.com) | [Approximately 25 min, owner-corrected](website/ember-kitchen/BUILD-NOTES.md) |
+| [EMBER Kitchen](website/ember-kitchen) | A 3D burger unstacking on scroll, tumbling fries, rising iced cola, and a demo tasting tray | [Open EMBER Kitchen](https://firebrick-reindeer-525697.hostingersite.com) | [Approximately 25 min](website/ember-kitchen/BUILD-NOTES.md) |
 | [PRISM](website/prism) | Chrome portal, curved 3D project gallery, and immersive world previews | [Open PRISM](https://palegreen-hyena-221826.hostingersite.com) | 10 min 12 sec (research/build/checks; publishing excluded) |
 
 Live demos are hosted on Hostinger. The GitHub repository is public.
@@ -78,7 +78,7 @@ The separate space demo lives in `website/ember/`. Its recorded research/build/c
 
 ## EMBER Kitchen restaurant
 
-The restaurant demo lives in `website/ember-kitchen/`. The owner-corrected build duration is approximately 25 minutes. This replaces the earlier elapsed-time estimates. It uses a CC BY 4.0 burger by usp05, original Three.js fries and iced cola geometry, and Unsplash food photos. Full attribution is linked in the site footer.
+The restaurant demo lives in `website/ember-kitchen/`. The build duration is approximately 25 minutes. It uses a CC BY 4.0 burger by usp05, original Three.js fries and iced cola geometry, and Unsplash food photos. Full attribution is linked in the site footer.
 
 ## PRISM spatial gallery
 
