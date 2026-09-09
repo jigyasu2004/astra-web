@@ -1,19 +1,8 @@
 # VERDANT build and revision timings
 
-Updated 2026-09-09 06:15:49 UTC.
+**Recorded build time: 27 min.**
 
-**Recorded work so far: 47 min 20 sec**, including the current publishing/responsiveness session through the timestamp above. These are elapsed task work windows, including tool/build waits, excluding gaps between user messages. They are not loading times.
-
-| Work window | Recorded duration |
-| --- | --- |
-| Planning and research | 53 sec |
-| Initial plant website and organization | 11 min 54 sec |
-| 3D forest revision and initial Hostinger/GitHub setup | 15 min 48 sec |
-| Loading screen and eight scroll chapters | 9 min 31 sec |
-| Responsive refinements and automatic publishing, through this update | 9 min 14 sec |
-| **Total recorded through this update** | **47 min 20 sec** |
-
-Aether's initial full task window was 7 min 21 sec. The earlier 5 min 1 sec (Aether) and 8 min 1 sec (VERDANT) figures measured registration-to-first-publication only, not all work.
+Updated to the project owner’s corrected timing on 9 September 2026.
 
 ## Automatic publishing
 
