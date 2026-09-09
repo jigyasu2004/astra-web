@@ -61,3 +61,7 @@ Keyboard-accessible controls, responsive layouts, and reduced-motion preferences
 ## 3D revision
 
 VERDANT was rebuilt on 9 September 2026 after feedback requesting real 3D movement. This revision adds a growing textured tree, a camera orbit, travel through a grove, and an autumn sequence. The 3D revision was not independently timed; the recorded build windows above refer only to the earlier versions.
+
+## Loading and story update
+
+VERDANT now has a lightweight opening animation, waits for decoded textures and the first rendered frame, and tells its story across eight scroll chapters with masked line reveals. Reduced-motion preferences are respected. This follow-up revision was not independently timed.

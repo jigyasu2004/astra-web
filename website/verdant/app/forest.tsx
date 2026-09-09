@@ -1,16 +1,16 @@
 'use client';
 import { useEffect, useRef } from 'react';
-export default function Forest({progress,onReady,onError}:{progress:React.RefObject<number>;onReady:()=>void;onError:()=>void}){
+export default function Forest({progress,onReady,onError,onStage}:{progress:React.RefObject<number>;onReady:()=>void;onError:()=>void;onStage:(stage:string)=>void}){
  const mount=useRef<HTMLDivElement>(null);
  useEffect(()=>{let cleanup=()=>{};let cancelled=false;
- (async()=>{const THREE=await import('three');const {Tree}=await import('@dgreenheck/ez-tree');if(cancelled)return;
+ (async()=>{const THREE=await import('three');onStage('Shaping the canopy');const {Tree}=await import('@dgreenheck/ez-tree');if(cancelled)return;
  const host=mount.current!;const scene=new THREE.Scene();scene.background=new THREE.Color('#101e17');scene.fog=new THREE.FogExp2('#18281c',.028);
- const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.3;renderer.localClippingEnabled=true;host.appendChild(renderer.domElement);
+ const renderer=new THREE.WebGLRenderer({antialias:true,powerPreference:'high-performance'});renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setSize(innerWidth,innerHeight);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFShadowMap;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.3;renderer.localClippingEnabled=true;host.appendChild(renderer.domElement);
  const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,.1,160);
  const hemi=new THREE.HemisphereLight('#e6efd0','#243626',2);scene.add(hemi);
  const sun=new THREE.DirectionalLight('#ffe3a4',4.5);sun.position.set(12,25,-10);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-35,right:35,top:35,bottom:-35,far:90});sun.shadow.bias=-.0005;scene.add(sun);scene.add(new THREE.AmbientLight('#a1c8a3',.4));
  const floor=new THREE.Mesh(new THREE.PlaneGeometry(250,250),new THREE.MeshStandardMaterial({color:'#293e26',roughness:1}));floor.rotation.x=-Math.PI/2;floor.position.y=-.12;floor.receiveShadow=true;scene.add(floor);
- const dirt=new THREE.TextureLoader().load('/forest/dirt.jpg');dirt.wrapS=dirt.wrapT=THREE.RepeatWrapping;dirt.repeat.set(25,25);dirt.colorSpace=THREE.SRGBColorSpace;floor.material.map=dirt;floor.material.needsUpdate=true;
+ const dirt=await new THREE.TextureLoader().loadAsync('/forest/dirt.jpg');dirt.wrapS=dirt.wrapT=THREE.RepeatWrapping;dirt.repeat.set(25,25);dirt.colorSpace=THREE.SRGBColorSpace;floor.material.map=dirt;floor.material.needsUpdate=true;
  const hero=new Tree();hero.loadPreset('Oak Medium');hero.options.leaves.tint=0xb5d073;hero.options.leaves.count=13;hero.generate();hero.position.set(4,0,0);hero.scale.setScalar(.19);scene.add(hero);
  const growPlane=new THREE.Plane(new THREE.Vector3(0,-1,0),1.4);hero.branchesMesh.material.clippingPlanes=[growPlane];hero.leavesMesh.material.clippingPlanes=[growPlane];hero.branchesMesh.castShadow=true;hero.leavesMesh.castShadow=true;
  const grove=new THREE.Group();scene.add(grove);
@@ -31,9 +31,14 @@ export default function Forest({progress,onReady,onError}:{progress:React.RefObj
  const autumn=THREE.MathUtils.smoothstep(p,.72,.98);hero.leavesMesh.material.color.setRGB(1,1-autumn*.38,1-autumn*.68);template.leavesMesh.material.color.setRGB(1,1-autumn*.24,1-autumn*.55);sun.color.setRGB(1,.89-autumn*.16,.64-autumn*.2);
  if(!reduced){hero.update(time);template.update(time);motes.rotation.y=Math.sin(time*.05)*.05}
  falling.visible=p>.7;for(let i=0;i<85;i++){leafDummy.position.set(Math.sin(i*71)*9,((i*.73+(reduced?0:-time*.7))%13+13)%13,-20+(Math.cos(i*13)*20));leafDummy.rotation.set(time*.4+i,i+time*.2,i*.3);leafDummy.updateMatrix();falling.setMatrixAt(i,leafDummy.matrix)}falling.instanceMatrix.needsUpdate=true;
- renderer.render(scene,camera);frame=requestAnimationFrame(render)};render();onReady();
+ renderer.render(scene,camera);frame=requestAnimationFrame(render)};
  const lost=(e:Event)=>{e.preventDefault();cancelAnimationFrame(frame);onError()};renderer.domElement.addEventListener('webglcontextlost',lost);
  cleanup=()=>{cancelAnimationFrame(frame);removeEventListener('resize',resize);removeEventListener('pointermove',pointer);renderer.domElement.removeEventListener('webglcontextlost',lost);const geos=new Set<any>(),mats=new Set<any>(),textures=new Set<any>();scene.traverse((o:any)=>{if(o.geometry)geos.add(o.geometry);for(const m of (o.material?Array.isArray(o.material)?o.material:[o.material]:[])){mats.add(m);for(const v of Object.values(m))if((v as any)?.isTexture)textures.add(v)}});geos.forEach(g=>g.dispose());mats.forEach(m=>m.dispose());textures.forEach(t=>t.dispose());renderer.dispose();renderer.domElement.remove()};
- })().catch(onError);return()=>{cancelled=true;cleanup()};},[]);
+ // Decode every material texture before revealing the first rendered scene.
+ const images=new Set<HTMLImageElement>();scene.traverse((obj:any)=>{for(const material of (obj.material?Array.isArray(obj.material)?obj.material:[obj.material]:[])){for(const value of Object.values(material)){const image=(value as any)?.isTexture?(value as any).image:null;if(image instanceof HTMLImageElement)images.add(image)}}});
+ await Promise.all([...images].map(image=>image.decode()));if(cancelled)return;
+ onStage('Finding the light');camera.position.set(4,4.5,16);camera.lookAt(1.4,2.7,0);await renderer.compileAsync(scene,camera);if(cancelled)return;render();
+ await new Promise<void>(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve())));if(!cancelled)onReady();
+ })().catch(()=>{if(!cancelled)onError()});return()=>{cancelled=true;cleanup()};},[]);
  return <div ref={mount} className="forest-canvas" aria-hidden="true"/>;
 }
