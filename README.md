@@ -7,7 +7,7 @@ A collection of interactive websites built with GPT Astra. Each project includes
 | [Aether](website/aether) | Scroll-driven particle transformations and pointer-responsive motion | [Open Aether](https://saddlebrown-shark-315620.hostingersite.com) | 7 min 21 sec initial task |
 | [VERDANT](website/verdant) | Real-time 3D tree growth, an orbiting camera, forest travel, and falling autumn leaves | [Open VERDANT](https://antiquewhite-ant-461490.hostingersite.com) | [47 min 20 sec recorded through the latest timing checkpoint](website/verdant/BUILD-NOTES.md) |
 | [EMBER — Space Journey](website/ember) | 3D Earth and Moon flybys, drifting asteroids, and travel through Saturn’s rings | [Open EMBER](https://peru-rat-318520.hostingersite.com) | 16 min 30 sec (research/build/checks; publishing excluded) |
-| [EMBER Kitchen](website/ember-kitchen) | A 3D burger unstacking on scroll, tumbling fries, rising iced cola, and a demo tasting tray | [Open EMBER Kitchen](https://firebrick-reindeer-525697.hostingersite.com) | 25 min 29 sec through expanded-animation validation |
+| [EMBER Kitchen](website/ember-kitchen) | A 3D burger unstacking on scroll, tumbling fries, rising iced cola, and a demo tasting tray | [Open EMBER Kitchen](https://firebrick-reindeer-525697.hostingersite.com) | 29 min 39 sec through sound-effect build validation |
 
 Live demos are hosted on Hostinger. The GitHub repository is private.
 
@@ -76,4 +76,4 @@ The separate space demo lives in `website/ember/`. Its recorded research/build/c
 
 ## EMBER Kitchen restaurant
 
-The restaurant demo lives in `website/ember-kitchen/`. Recorded wall-clock work from this task’s start at 05:51:30 to the expanded-animation validation checkpoint at 06:16:59 UTC on 9 September 2026 was 25 min 29 sec. This includes research, implementation, additional animation feedback, validation, and hosting preparation; later publication is excluded. It uses a CC BY 4.0 burger by usp05, original Three.js fries and iced cola geometry, and Unsplash food photos. Full attribution is linked in the site footer.
+The restaurant demo lives in `website/ember-kitchen/`. Recorded wall-clock work from this task’s start at 05:51:30 to the animation and sound-effect validation checkpoint at 06:21:09 UTC on 9 September 2026 was 29 min 39 sec. This includes research, implementation, additional animation and sound feedback, validation, and hosting preparation; later publication is excluded. It uses a CC BY 4.0 burger by usp05, original Three.js fries and iced cola geometry, and Unsplash food photos. Full attribution is linked in the site footer.
