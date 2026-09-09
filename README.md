@@ -6,8 +6,9 @@ A collection of interactive websites built with GPT Astra. Each project includes
 | --- | --- | --- | --- |
 | [Aether](website/aether) | Scroll-driven particle transformations and pointer-responsive motion | [Open Aether](https://saddlebrown-shark-315620.hostingersite.com) | 5 min 1 sec |
 | [VERDANT](website/verdant) | Real-time 3D tree growth, an orbiting camera, forest travel, and falling autumn leaves | [Open VERDANT](https://antiquewhite-ant-461490.hostingersite.com) | 8 min 1 sec |
+| [EMBER — Space Journey](website/ember) | 3D Earth and Moon flybys, drifting asteroids, and travel through Saturn’s rings | [Open EMBER](https://peru-rat-318520.hostingersite.com) | 16 min 30 sec (research/build/checks; publishing excluded) |
 
-Both live demos are hosted on Hostinger. The GitHub repository is private.
+Live demos are hosted on Hostinger. The GitHub repository is private.
 
 ## Timing notes
 
@@ -22,6 +23,7 @@ Recorded on 9 September 2026, measured from site registration to the first succe
 website/
   aether/
   verdant/
+  ember/
 ```
 
 Each project is independent. Shared repository name: `astra-web`; local parent folder: `gpt-astra`.
@@ -44,7 +46,7 @@ pnpm install
 pnpm build:hostinger
 ```
 
-Upload the **contents** of `hostinger-dist/` into the corresponding website's `public_html/` folder. The generated `index.html` must be directly inside `public_html/`. Both sites run as static HTML, JavaScript, and CSS; no Node server, database, API keys, or paid external services are needed at runtime.
+Upload the **contents** of `hostinger-dist/` into the corresponding website's `public_html/` folder. The generated `index.html` must be directly inside `public_html/`. These sites run as static HTML, JavaScript, and CSS; no Node server, database, API keys, or paid external services are needed at runtime.
 
 Use a separate Hostinger website/domain for each project. Do not overwrite an existing website's files. If deploying through a build integration, select the relevant `website/aether` or `website/verdant` root, build with `pnpm build:hostinger`, and publish `hostinger-dist`.
 
@@ -65,3 +67,7 @@ VERDANT was rebuilt on 9 September 2026 after feedback requesting real 3D moveme
 ## Loading and story update
 
 VERDANT now has a lightweight opening animation, waits for decoded textures and the first rendered frame, and tells its story across eight scroll chapters with masked line reveals. Reduced-motion preferences are respected. This follow-up revision was not independently timed.
+
+## EMBER space journey
+
+The separate space demo lives in `website/ember/`. Its recorded research/build/check window is 05:56:42–06:13:12 UTC on 9 September 2026 (16 min 30 sec), excluding subsequent publication and using the existing shared scaffold. It uses CC BY 4.0 Solar System Scope maps, Three.js atmospheric shaders, a ring shadow shader, and instanced rock fields. See its project README for attribution and validation.
