@@ -17,3 +17,38 @@ footer{padding:50px 5vw 25px}.footer-top{display:flex;justify-content:space-betw
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}.dish-image:hover img{transform:none}}
 
 .sound-toggle{display:flex;align-items:center;gap:7px;font-size:8px;letter-spacing:.07em;white-space:nowrap;padding:10px 0}.sound-toggle[aria-pressed=true]{font-weight:700}.sound-toggle:focus-visible{outline-offset:4px}@media(max-width:759px){.sound-toggle{font-size:6px;gap:4px}.scene-bottom{gap:8px}.scroll-hint{max-width:145px;font-size:6px}.motion-toggle{margin-left:0;width:28px;height:28px}.sound-toggle{margin-left:auto}.scene-index{margin-left:0}}
+
+/* Portrait phones get a dedicated food stage; copy and controls never share it. */
+@media(max-width:759px){
+ .theatre{height:100svh;min-height:0}.journey{height:340svh;min-height:0}
+ .food-scene{top:43%;bottom:11%;height:auto}
+ .scene-copy,.anatomy,.finish{top:100px;left:7vw;width:86%}
+ .scene-copy h1{font-size:clamp(48px,14vw,74px);line-height:.91;margin:14px 0 15px}
+ .scene-copy h1 br{display:initial}
+ .scene-copy h2{font-size:clamp(48px,13vw,72px);line-height:.9;margin:15px 0}
+ .anatomy h2 br{display:initial}.anatomy h2 br:first-child{display:initial}
+ .anatomy h2{max-width:350px}.anatomy p{font-size:11px;line-height:1.55}
+ .hero-detail{position:absolute;top:calc(88svh - 100px);left:0;border:0;padding:0;max-width:none}.hero-detail b{display:none}
+ .ingredient-notes{display:none}.finish h2 br{display:initial}
+ .scene-fallback{top:47%;bottom:14%;height:auto;width:70%;right:15%}
+ .ghost-type{font-size:39vw;bottom:16%;opacity:.5}
+ .scene-bottom{bottom:max(12px,env(safe-area-inset-bottom));left:6vw;right:6vw;gap:9px}
+ .scene-bottom button{min-height:44px}.motion-toggle{min-width:44px;border:0;margin:0}.sound-toggle{font-size:7px;margin-left:auto}.sound-toggle svg{width:17px;height:17px}
+ .scroll-hint{max-width:128px;font-size:7px;line-height:1.5;letter-spacing:.04em}.scene-index{font-size:8px}.progress{display:none}
+ .tray-button{min-height:44px}.flavour-options button{min-height:44px}.tray-row>button{min-width:38px;min-height:38px}.tray-row{gap:8px}
+ .food-modal [data-slot=dialog-close],.tray-modal [data-slot=dialog-close]{min-width:44px;min-height:44px}
+}
+@media(max-width:759px) and (max-height:680px){
+ .nav{height:67px}.scene-copy,.anatomy,.finish{top:88px}.scene-copy h1,.scene-copy h2{font-size:clamp(44px,13vw,58px);margin:10px 0 12px}
+ .scene-copy p{display:none}.scene-copy .eyebrow{font-size:7px}.food-scene{top:46%;bottom:12%}
+ .hero-detail{display:none}.scene-fallback{top:47%;bottom:14%}.pill{min-height:36px;padding:11px 16px}
+}
+@media(orientation:landscape) and (max-height:540px){
+ .nav{height:62px}.wordmark{font-size:34px}.theatre{min-height:0;height:100svh}.scene-copy,.anatomy,.finish{top:24%;left:5vw;width:40%}
+ .scene-copy h1,.scene-copy h2{font-size:clamp(42px,7.5vw,65px);line-height:.88;margin:10px 0}.scene-copy p,.hero-detail{display:none}
+ .food-scene{inset:0 0 0 42%;height:100%}.scene-copy .eyebrow{font-size:7px}.ghost-type{bottom:35px}.scene-bottom{bottom:8px}.ingredient-notes{display:none}
+}
+
+@media(max-width:759px){.anatomy h2 br:first-child{display:none}.tray-row>button{min-width:44px;min-height:44px}}
+@media(max-width:759px) and (max-height:760px){.intro p{display:none}}
+@media(max-width:379px){.tray-row{flex-wrap:wrap}.tray-row>div{min-width:calc(100% - 70px)}.tray-row>button:first-of-type{margin-left:auto}}

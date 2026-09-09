@@ -19,3 +19,7 @@ See `public/credits.html` for full linked attribution. Burger by usp05 (CC BY 4.
 ## Validation
 
 TypeScript check and production build pass. WebMCP contracts verified: renderer ready, progress changes, invalid progress rejection, tray quantities and ₹627 combo total, invalid quantity rejection, and reset. Motion respects reduced-motion settings; ambient movement can also be paused. Full browser visual QA was not requested.
+
+## Phone and reference refinement
+
+The food occupies its own canvas region below the copy on portrait phones, with a separate landscape composition. Phone rendering caps pixel density at 1.35, uses 512px shadows, and skips rendering while offscreen or hidden. Larger touch targets and compact layouts support small screens. The ending now settles the meal onto a ceramic platter with contact shadows, inspired by the food-first presentation of the supplied Instagram reference.
