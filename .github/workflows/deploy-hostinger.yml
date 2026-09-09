@@ -1,0 +1,68 @@
+name: Publish Hostinger websites
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'website/aether/**'
+      - 'website/verdant/**'
+      - '.github/workflows/deploy-hostinger.yml'
+  workflow_run:
+    workflows: ['Import website sources']
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hostinger-static-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        site: [aether, verdant]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: main
+      - uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa
+        with:
+          version: 10
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: website/${{ matrix.site }}/pnpm-lock.yaml
+      - name: Install and build static website
+        working-directory: website/${{ matrix.site }}
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build:hostinger
+      - name: Publish generated files to Hostinger branch
+        env:
+          SITE: ${{ matrix.site }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          source_sha=$(git rev-parse HEAD)
+          branch="hostinger-$SITE"
+          deploy_dir="$RUNNER_TEMP/deploy-$SITE"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if git ls-remote --exit-code --heads origin "$branch" >/dev/null; then
+            git fetch origin "$branch"
+            git worktree add --detach "$deploy_dir" FETCH_HEAD
+          else
+            git worktree add --detach "$deploy_dir" HEAD
+            git -C "$deploy_dir" checkout --orphan "$branch"
+          fi
+          # Only the generated worktree is replaced. Source and hosting uploads are untouched.
+          git -C "$deploy_dir" rm -rf --ignore-unmatch .
+          cp -a "website/$SITE/hostinger-dist/." "$deploy_dir/"
+          printf '{"site":"%s","sourceCommit":"%s","builtAt":"%s"}\n' "$SITE" "$source_sha" "$(date -u +%FT%TZ)" > "$deploy_dir/deployment.json"
+          git -C "$deploy_dir" add --all
+          git -C "$deploy_dir" commit -m "Publish $SITE from $source_sha"
+          git -C "$deploy_dir" push origin "HEAD:refs/heads/$branch"
