@@ -5,6 +5,7 @@ on:
     paths:
       - 'website/aether/**'
       - 'website/verdant/**'
+      - 'website/ember/**'
       - '.github/workflows/deploy-hostinger.yml'
   workflow_run:
     workflows: ['Import website sources']
@@ -23,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        site: [aether, verdant]
+        site: [aether, verdant, ember]
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
