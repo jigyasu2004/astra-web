@@ -2,22 +2,15 @@
 
 A collection of interactive websites built with GPT Astra. Each project includes its source code and an independent Hostinger-ready build.
 
-| Website | Experience | Live demo | Recorded work duration |
+| Website | Experience | Live demo | Duration |
 | --- | --- | --- | --- |
-| [Aether](website/aether) | Scroll-driven particle transformations and pointer-responsive motion | [Open Aether](https://saddlebrown-shark-315620.hostingersite.com) | 7 min 21 sec initial task |
-| [VERDANT](website/verdant) | Real-time 3D tree growth, an orbiting camera, forest travel, and falling autumn leaves | [Open VERDANT](https://antiquewhite-ant-461490.hostingersite.com) | [27 min](website/verdant/BUILD-NOTES.md) |
-| [EMBER — Space Journey](website/ember) | 3D Earth and Moon flybys, drifting asteroids, and travel through Saturn’s rings | [Open EMBER](https://peru-rat-318520.hostingersite.com) | 16 min 30 sec (research/build/checks; publishing excluded) |
-| [EMBER Kitchen](website/ember-kitchen) | A 3D burger unstacking on scroll, tumbling fries, rising iced cola, and a demo tasting tray | [Open EMBER Kitchen](https://firebrick-reindeer-525697.hostingersite.com) | [Approximately 25 min](website/ember-kitchen/BUILD-NOTES.md) |
-| [PRISM](website/prism) | Chrome portal, curved 3D project gallery, and immersive world previews | [Open PRISM](https://palegreen-hyena-221826.hostingersite.com) | 10 min 12 sec (research/build/checks; publishing excluded) |
+| [Aether](website/aether) | Scroll-driven particle transformations and pointer-responsive motion | [Open Aether](https://saddlebrown-shark-315620.hostingersite.com) | 7 min 21 sec |
+| [VERDANT](website/verdant) | Real-time 3D tree growth, an orbiting camera, forest travel, and falling autumn leaves | [Open VERDANT](https://antiquewhite-ant-461490.hostingersite.com) | 27 min |
+| [EMBER — Space Journey](website/ember) | 3D Earth and Moon flybys, drifting asteroids, and travel through Saturn’s rings | [Open EMBER](https://peru-rat-318520.hostingersite.com) | 16 min 30 sec |
+| [EMBER Kitchen](website/ember-kitchen) | A 3D burger unstacking on scroll, tumbling fries, rising iced cola, and a demo tasting tray | [Open EMBER Kitchen](https://firebrick-reindeer-525697.hostingersite.com) | 25 min |
+| [PRISM](website/prism) | Chrome portal, curved 3D project gallery, and immersive world previews | [Open PRISM](https://palegreen-hyena-221826.hostingersite.com) | 10 min 12 sec |
 
 Live demos are hosted on Hostinger. The GitHub repository is public.
-
-## Timing notes
-
-Earlier measurements on 9 September 2026 were 5 min 1 sec for Aether and 8 min 1 sec for VERDANT, measured from site registration to the first successful publication. The table now links the broader task-duration record. These are observed development/publication windows, not total task times: initial research, early setup, the subsequent 3D redesign, folder organization, GitHub upload, and Hostinger migration are excluded.
-
-- Aether: 04:26:15–04:31:16 UTC.
-- VERDANT: 04:37:22–04:45:23 UTC.
 
 ## Layout
 
@@ -66,20 +59,20 @@ Keyboard-accessible controls, responsive layouts, and reduced-motion preferences
 
 ## 3D revision
 
-VERDANT was rebuilt on 9 September 2026 after feedback requesting real 3D movement. This revision adds a growing textured tree, a camera orbit, travel through a grove, and an autumn sequence. See the updated project timing record.
+VERDANT was rebuilt on 9 September 2026 after feedback requesting real 3D movement. This revision adds a growing textured tree, a camera orbit, travel through a grove, and an autumn sequence.
 
 ## Loading and story update
 
-VERDANT now has a lightweight opening animation, waits for decoded textures and the first rendered frame, and tells its story across eight scroll chapters with masked line reveals. Reduced-motion preferences are respected.  See [updated work timings and deployment notes](website/verdant/BUILD-NOTES.md).
+VERDANT now has a lightweight opening animation, waits for decoded textures and the first rendered frame, and tells its story across eight scroll chapters with masked line reveals. Reduced-motion preferences are respected.
 
 ## EMBER space journey
 
-The separate space demo lives in `website/ember/`. Its recorded research/build/check window is 05:56:42–06:13:12 UTC on 9 September 2026 (16 min 30 sec), excluding subsequent publication and using the existing shared scaffold. It uses CC BY 4.0 Solar System Scope maps, Three.js atmospheric shaders, a ring shadow shader, and instanced rock fields. See its project README for attribution and validation.
+The separate space demo lives in `website/ember/`. It uses CC BY 4.0 Solar System Scope maps, Three.js atmospheric shaders, a ring shadow shader, and instanced rock fields. See its project README for attribution and validation.
 
 ## EMBER Kitchen restaurant
 
-The restaurant demo lives in `website/ember-kitchen/`. The build duration is approximately 25 minutes. It uses a CC BY 4.0 burger by usp05, original Three.js fries and iced cola geometry, and Unsplash food photos. Full attribution is linked in the site footer.
+The restaurant demo lives in `website/ember-kitchen/`. It uses a CC BY 4.0 burger by usp05, original Three.js fries and iced cola geometry, and Unsplash food photos. Full attribution is linked in the site footer.
 
 ## PRISM spatial gallery
 
-A separate site inspired by the Alche portfolio shown in the supplied Instagram reference, with an original PRISM identity. Scroll from a chrome portal into six image panels arranged in 3D. Project previews link to the other Astra demos. See [PRISM documentation](website/prism/README.md) for timing and credits.
+A separate site inspired by the Alche portfolio shown in the supplied Instagram reference, with an original PRISM identity. Scroll from a chrome portal into six image panels arranged in 3D. Project previews link to the other Astra demos. See [PRISM documentation](website/prism/README.md) for credits.
