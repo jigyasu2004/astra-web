@@ -1,0 +1,9 @@
+.project-history/
+release/
+**/node_modules/
+**/dist/
+**/hostinger-dist/
+**/.wrangler/
+**/.vinext/
+**/.env*
+.DS_Store
