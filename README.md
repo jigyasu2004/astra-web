@@ -5,11 +5,11 @@ A collection of interactive websites built with GPT Astra. Each project includes
 | Website | Experience | Live demo | Recorded work duration |
 | --- | --- | --- | --- |
 | [Aether](website/aether) | Scroll-driven particle transformations and pointer-responsive motion | [Open Aether](https://saddlebrown-shark-315620.hostingersite.com) | 7 min 21 sec initial task |
-| [VERDANT](website/verdant) | Real-time 3D tree growth, an orbiting camera, forest travel, and falling autumn leaves | [Open VERDANT](https://antiquewhite-ant-461490.hostingersite.com) | [47 min 20 sec recorded through the latest timing checkpoint](website/verdant/BUILD-NOTES.md) |
+| [VERDANT](website/verdant) | Real-time 3D tree growth, an orbiting camera, forest travel, and falling autumn leaves | [Open VERDANT](https://antiquewhite-ant-461490.hostingersite.com) | [27 min](website/verdant/BUILD-NOTES.md) |
 | [EMBER — Space Journey](website/ember) | 3D Earth and Moon flybys, drifting asteroids, and travel through Saturn’s rings | [Open EMBER](https://peru-rat-318520.hostingersite.com) | 16 min 30 sec (research/build/checks; publishing excluded) |
 | [EMBER Kitchen](website/ember-kitchen) | A 3D burger unstacking on scroll, tumbling fries, rising iced cola, and a demo tasting tray | [Open EMBER Kitchen](https://firebrick-reindeer-525697.hostingersite.com) | 29 min 39 sec through sound-effect build validation |
 
-Live demos are hosted on Hostinger. The GitHub repository is private.
+Live demos are hosted on Hostinger. The GitHub repository is public.
 
 ## Timing notes
 
@@ -64,11 +64,11 @@ Keyboard-accessible controls, responsive layouts, and reduced-motion preferences
 
 ## 3D revision
 
-VERDANT was rebuilt on 9 September 2026 after feedback requesting real 3D movement. This revision adds a growing textured tree, a camera orbit, travel through a grove, and an autumn sequence. The full 3D revision and hosting setup task took 15 min 48 sec, recovered from task timestamps. See the updated timing breakdown.
+VERDANT was rebuilt on 9 September 2026 after feedback requesting real 3D movement. This revision adds a growing textured tree, a camera orbit, travel through a grove, and an autumn sequence. See the updated project timing record.
 
 ## Loading and story update
 
-VERDANT now has a lightweight opening animation, waits for decoded textures and the first rendered frame, and tells its story across eight scroll chapters with masked line reveals. Reduced-motion preferences are respected. The loading/story task took 9 min 31 sec. See [updated work timings and deployment notes](website/verdant/BUILD-NOTES.md).
+VERDANT now has a lightweight opening animation, waits for decoded textures and the first rendered frame, and tells its story across eight scroll chapters with masked line reveals. Reduced-motion preferences are respected.  See [updated work timings and deployment notes](website/verdant/BUILD-NOTES.md).
 
 ## EMBER space journey
 
